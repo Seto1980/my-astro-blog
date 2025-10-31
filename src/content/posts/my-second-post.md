@@ -1,15 +1,13 @@
 ---
-title: "サラリーマン投資家ブロガーぐりっと"
-description: "meta description"
+title: "WordPress『Swell』から『Cloudflare × VS Code』へ変更。これは…まさに沼でした。"
+description: "WordPress(Swell)からCloudflare(Astro)へブログを移行した理由と、その過程で感じた「ブログの価値の変化」についての考察です。"
 date: 2025-10-30T22:30:00+09:00
 image: "/images/posts/08.png"
-categories: ["日記"]
+categories: ["ブログ運営", "日記"]
 authors: ["ぐりっと"]
-tags: []
+tags: ["Astro", "Cloudflare", "WordPress"]
 draft: false
 ---
-
-# WordPress『Swell』から『Cloudflare × VS Code』へ変更。これは…まさに沼でした。
 
 こんにちは。  
 **サラリーマン投資家ブロガーの「ぐりっと」です。**
@@ -106,6 +104,8 @@ AIの台頭によって、“情報を集めるだけ”のブログは不要に
 
 この3つを組み合わせると👇
 VS Codeで記事を書く → GitHubに保存 → Cloudflareが自動で公開
+
+
 ---
 
 ## もちろん、最初は全然できなかった
