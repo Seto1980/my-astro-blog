@@ -1,23 +1,44 @@
 ---
-title: "I’m John Doe, A content writer based in LDN, Currently at Bookworm"
-meta_title: "About"
+title: "こんにちは、「ぐりっと」です。京都郊外に住んでいるサラリーマン投資家です。"
+meta_title: "ぐりっとについて (About)"
 image: "/images/author.png"
 draft: false
 
 what_i_do:
-  title: "What I Do"
+  title: "このブログで発信すること"
   items:
-  - title: "Content Writing"
-    description: "Purus eget ipsum elementum venenatis, quis rutrum mi semper nonpurus eget ipsum elementum venenatis."
+  - title: "米国株・投資信託・資産形成"
+    description: "メインは米国株や投資信託、そして資産形成について。ごく普通の会社員がコツコツと積み上げていくリアルな過程を発信しています。"
   
-  - title: "Photography"
-    description: "Aenean maximus urna magna elementum, quis rutrum mi semper non purus eget ipsum venenatis."
+  - title: "節約術・暮らしのTIPS"
+    description: "無理なく続けられる現実的な節約術や、日々の暮らしが少しだけ快適になる『ちょっと得する』TIPSを紹介します。"
   
-  - title: "Web Research"
-    description: "Aenean maximus urna magna elementum venenatis, quis semper non purus eget ipsum venenatis."
+  - title: "ブログ・IT・テクノロジー"
+    description: "WordPressからAstroまで。さらにAIや3Dプリンターなど、最新の技術やガジェットについても発信しています。"
 
 ---
 
-A content writer with over 12 years experience working across brand identity, publishing and digital products. Maecenas sit amet purus eget ipsum elementum venenatis. Aenean maximus urna magna elementum venenatis quis non purus.
+こんにちは、「ぐりっと」です。  
+京都で家族（妻と娘2人）と暮らしながら、会社員として働いています。  
 
-Purus eget ipsum elementum venenatis. Aenean maximus urna magna elementum venenatis, quis rutrum mi semper non purus eget ipsum elementum venenatis, aenean maximus urna magna elementum.
+40代半ば、いわゆる“子育て世代”です。  
+仕事・家庭・投資・趣味のバランスをどう取るか。  
+その現実的な試行錯誤を、このブログにまとめています。  
+
+趣味は3DプリンターとAI。  
+スマホは Pixel 10 Pro を愛用しています。  
+テクノロジーやツールの活用で、生活をちょっと便利にするのが好きです。  
+
+以前はWordPressでブログを運営していましたが、  
+現在はCloudflare × Astro構成に切り替えて、軽くて管理しやすい形で再スタートしました。  
+
+このブログでは、  
+- 会社員でもできる資産形成  
+- 無理のない節約と暮らしの工夫  
+- 新しい技術との上手な付き合い方  
+
+この3つをテーマに、リアルな目線で発信しています。  
+
+読んでくださる方が、  
+「ちょっとやってみようかな」と思えるような、  
+そんな小さなきっかけを届けられたら嬉しいです。
