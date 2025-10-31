@@ -1,40 +1,40 @@
 {
   "main": [
     {
-      "name": "Home",
+      "name": "ホーム",
       "url": "/"
     },
     {
-      "name": "About",
+      "name": "自己紹介【ぐりっと】",
       "url": "/about"
     },
     {
-      "name": "Contact",
+      "name": "お問い合わせ",
       "url": "/contact"
     },
     {
-      "name": "Pages",
+      "name": "記事",
       "url": "",
       "hasChildren": true,
       "children": [
         {
-          "name": "Authors",
+          "name": "著者一覧",
           "url": "/authors"
         },
         {
-          "name": "Categories",
+          "name": "カテゴリ一覧",
           "url": "/categories"
         },
         {
-          "name": "Tags",
+          "name": "タグ一覧",
           "url": "/tags"
         },
         {
-          "name": "Elements",
+          "name": "デザイン要素",
           "url": "/elements"
         },
         {
-          "name": "Privacy Policy",
+          "name": "プライバシーポリシー",
           "url": "/privacy-policy"
         }
       ]
@@ -42,19 +42,19 @@
   ],
   "footer": [
     {
-      "name": "About",
+      "name": "ぐりっとについて",
       "url": "/about"
     },
     {
-      "name": "Contact",
+      "name": "お問い合わせ",
       "url": "/contact"
     },
     {
-      "name": "Elements",
+      "name": "デザイン要素",
       "url": "/elements"
     },
     {
-      "name": "Privacy Policy",
+      "name": "プライバシーポリシー",
       "url": "/privacy-policy"
     }
   ]
