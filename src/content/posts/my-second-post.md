@@ -1,5 +1,5 @@
 ---
-title: "WordPress『Swell』から『Cloudflare × VS Code』へ変更。これは…まさに沼でした。"
+title: "WordPress『Swell』から『Cloudflare × VS Code』へ変更。これはまさに沼でした。"
 description: "WordPress(Swell)からCloudflare(Astro)へブログを移行した理由と、その過程で感じた「ブログの価値の変化」についての考察です。"
 date: 2025-10-30T22:30:00+09:00
 image: "/images/posts/08.png"
@@ -16,7 +16,7 @@ draft: false
 中小企業で働きながら、<mark>昭和の価値観</mark>と<mark>令和のやさしさ</mark>の狭間で生きている、どこにでもいるサラリーマンです。
 
 今回は、これまで使っていた **WordPress『Swell』から『Cloudflare × VS Code』へ切り替えた話** をしたいと思います。  
-タイトル通り、これまでは、ちょっとした修行であり、これからは学びなおしでした。
+タイトル通り、これまではちょっとした修行であり、これからは学びなおしでした。
 
 
 
