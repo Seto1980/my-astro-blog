@@ -243,20 +243,21 @@ draft: false
     };
     chartInstance1 = new Chart(ctx, chartConfig);
   }
+
+  // ★★★ ここを修正しました！ ★★★
+  // DOMContentLoadedイベントを待たずに、スクリプトが読み込まれたらすぐに実行します。
   
-  // イベントリスナー
-  document.addEventListener('DOMContentLoaded', function() {
-    // DOMが読み込まれた後にチャートを作成
-    createFinancialChart1('composition');
-    
-    // ボタンイベント
-    document.querySelectorAll('.toggle-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        const chartType = this.getAttribute('data-chart');
-        createFinancialChart1(chartType);
-      });
+  // 初期チャート作成
+  createFinancialChart1('composition');
+  
+  // ボタンイベント
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const chartType = this.getAttribute('data-chart');
+      createFinancialChart1(chartType);
     });
   });
+  // ★★★ ここまで ★★★
 </script>
