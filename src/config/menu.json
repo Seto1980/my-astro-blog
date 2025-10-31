@@ -9,49 +9,53 @@
       "url": "/about"
     },
     {
-      "name": "お問い合わせ",
-      "url": "/contact"
-    },
-    {
       "name": "記事",
       "url": "",
       "hasChildren": true,
       "children": [
         {
-          "name": "著者一覧",
-          "url": "/authors"
+          "name": "記事一覧",
+          "url": "/blog"
         },
         {
-          "name": "カテゴリ一覧",
-          "url": "/categories"
+          "name": "おすすめの記事",
+          "url": "/categories/recommended"
+        },
+        {
+          "name": "僕の資産および投資成績",
+          "url": "/pages/my-investment"
         },
         {
           "name": "タグ一覧",
           "url": "/tags"
         },
         {
-          "name": "デザイン要素",
-          "url": "/elements"
-        },
-        {
           "name": "プライバシーポリシー",
           "url": "/privacy-policy"
         }
       ]
-    }
-  ],
-  "footer": [
-    {
-      "name": "ぐりっとについて",
-      "url": "/about"
     },
     {
       "name": "お問い合わせ",
       "url": "/contact"
+    }
+  ],
+  "footer": [
+    {
+      "name": "ホーム",
+      "url": "/"
     },
     {
-      "name": "デザイン要素",
-      "url": "/elements"
+      "name": "自己紹介【ぐりっと】",
+      "url": "/about"
+    },
+    {
+      "name": "記事一覧",
+      "url": "/blog"
+    },
+    {
+      "name": "お問い合わせ",
+      "url": "/contact"
     },
     {
       "name": "プライバシーポリシー",
