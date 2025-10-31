@@ -1,263 +1,140 @@
 ---
-title: "僕の資産および投資成績（2025年9月）"
-meta_title: "資産ポートフォリオ"
-description: "現在の金融資産ポートフォリオと、先月比の変動をインタラクティブなグラフで公開します。"
-date: 2025-09-30T23:59:00+09:00
+title: "WordPress『Swell』から『Cloudflare × VS Code』へ変更。これはまさに沼でした。"
+description: "WordPress(Swell)からCloudflare(Astro)へブログを移行した理由と、その過程で感じた「ブログの価値の変化」についての考察です。"
+date: 2025-10-30T22:30:00+09:00
 image: "/images/posts/08.png"
+categories: ["ブログ運営", "日記"]
 authors: ["ぐりっと"]
-tags: ["投資", "資産公開", "家計簿"]
+tags: ["Astro", "Cloudflare", "WordPress"]
 draft: false
 ---
 
-こんにちは、ぐりっとです。
-こちらは、僕の現在の金融資産ポートフォリオです。
+こんにちは。  
+**サラリーマン投資家ブロガーの「ぐりっと」です。**
 
-`[資産構成]` と `[先月比変動]` のボタンを押すと、グラフが切り替わります。
-データは2025年9月末時点のものです。毎月更新していく予定です！
+僕は京都郊外で暮らす40代の中間管理職。  
+中小企業で働きながら、<mark>昭和の価値観</mark>と<mark>令和のやさしさ</mark>の狭間で生きている、どこにでもいるサラリーマンです。
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+今回は、これまで使っていた **WordPress『Swell』から『Cloudflare × VS Code』へ切り替えた話** をしたいと思います。  
+タイトル通り、これまではちょっとした修行であり、これからは学びなおしでした。
 
-<style>
-  * {
-    font-family: 'Noto Sans JP', sans-serif;
-  }
-  .chart-container {
-    max-width: 800px;
-    margin: 20px auto;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 30px;
-  }
-  .controls { text-align: center; margin-bottom: 30px; }
-  .btn-group { display: inline-flex; gap: 8px; background: #f1f3f4; padding: 4px; border-radius: 8px; }
-  .toggle-btn { padding: 10px 20px; border: none; background: transparent; color: #666; border-radius: 6px; cursor: pointer; font-weight: 500; transition: all 0.3s ease; font-family: 'Noto Sans JP', sans-serif; }
-  .toggle-btn.active { background: #05374b; color: white; box-shadow: 0 2px 4px rgba(5, 55, 75, 0.3); }
-  .toggle-btn:hover:not(.active) { background: #e8eaed; }
-  .chart-wrapper { position: relative; height: 500px; }
-  .summary-info { margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px; text-align: center; }
-  .total-amount { font-size: 1.8em; font-weight: 700; color: #05374b; margin-bottom: 8px; }
-  .month-change { font-size: 1.2em; font-weight: 500; }
-  .positive { color: #2e8b57; }
-  .negative { color: #dc3545; }
-  @media (max-width: 768px) {
-    .chart-container { padding: 20px; margin: 10px; }
-    .chart-wrapper { height: 400px; }
-    .btn-group { flex-direction: column; width: 100%; }
-    .toggle-btn { width: 100%; margin: 2px 0; }
-    .total-amount { font-size: 1.5em; }
-  }
-</style>
 
-<div class="chart-container">
-  <div class="controls">
-    <div class="btn-group">
-      <button class="toggle-btn active" data-chart="composition">資産構成</button>
-      <button class="toggle-btn" data-chart="change">先月比変動</button>
-    </div>
-  </div>
-  
-  <div class="chart-wrapper">
-    <canvas id="financialChart1"></canvas>
-  </div>
-  
-  <div class="summary-info">
-    <div class="total-amount">¥20,663,132</div>
-    <div class="month-change negative">先月比 -¥129,495</div>
-  </div>
-</div>
 
-<script is:inline>
-  // Chart.js読み込みチェック
-  if (typeof Chart === 'undefined') {
-    console.error('Chart.js が読み込まれていません');
-  }
-  // データラベルプラグインの登録
-  if (typeof ChartDataLabels !== 'undefined') {
-    Chart.register(ChartDataLabels);
-  }
-  
-  // 中央テキスト描画プラグイン
-  const centerTextPlugin = {
-    id: 'centerText',
-    beforeDraw: function(chart) {
-      const { ctx, width, height } = chart;
-      ctx.restore();
-      
-      const fontSize = Math.min(width, height) / 12.5 * 0.9;
-      ctx.font = `bold ${fontSize}px Noto Sans JP`;
-      ctx.textBaseline = 'middle';
-      ctx.textAlign = 'center';
-      ctx.fillStyle = '#05374b';
-      
-      const line1 = '2025年9月';
-      const line2 = '金融資産';
-      const textX = width / 2;
-      const textY = height / 2 - fontSize * 1.2;
-      const lineHeight = fontSize * 1.2;
-      
-      ctx.fillText(line1, textX, textY - lineHeight / 2);
-      ctx.fillText(line2, textX, textY + lineHeight / 2);
-      ctx.save();
-    }
-  };
-  
-  // プラグインを登録
-  Chart.register(centerTextPlugin);
-  
-  // データ定義
-  const financialData1 = {
-    composition: { "現金": 2179247, "投資信託": 9986647, "米国株": 3962662, "ETF": 3203993, "インドネシア株": 525880, "日本株": 382600, "マレーシア株": 209755, "仮想通貨": 212348, "企業型DC": 42095 },
-    change: { "投資信託": 183863, "日本株": 37100, "ETF": 32729, "米国株": 5382, "現金": -354223, "インドネシア株": -19269, "仮想通貨": -10494, "マレーシア株": -4583, "企業型DC": 0 }
-  };
-  
-  // カラーパレット
-  const itemColors1 = {
-    "現金": '#05374b', "投資信託": '#A2D7D4', "米国株": '#FFBADD', "ETF": '#BAB454', "インドネシア株": '#BADDFF', "日本株": '#C4C8E1', "マレーシア株": '#FFE4B5', "仮想通貨": '#E6E6FA', "企業型DC": '#D3D3D3'
-  };
-  
-  let chartInstance1 = null;
-  
-  // チャート作成関数
-  function createFinancialChart1(dataType) {
-    const ctx = document.getElementById('financialChart1').getContext('2d');
-    
-    if (chartInstance1) {
-      chartInstance1.destroy();
-    }
-    
-    const data = financialData1[dataType];
-    const labels = Object.keys(data);
-    const values = Object.values(data);
-    const backgroundColors = labels.map(label => itemColors1[label] || '#cccccc');
-    
-    const chartConfig = {
-      type: 'doughnut',
-      data: {
-        labels: labels,
-        datasets: [{
-          data: values.map(Math.abs),
-          backgroundColor: backgroundColors,
-          borderWidth: 2,
-          borderColor: '#ffffff'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          datalabels: {
-            color: '#ffffff',
-            font: function(context) {
-              const labelName = labels[context.dataIndex];
-              if (dataType === 'change' && labelName === 'インドネシア株') {
-                return { family: 'Noto Sans JP', size: 11, weight: 'bold' };
-              }
-              return { family: 'Noto Sans JP', size: 22, weight: 'bold' };
-            },
-            formatter: function(value, context) {
-              const originalValue = values[context.dataIndex];
-              const totalAbs = values.reduce((sum, v) => sum + Math.abs(v), 0);
-              const percentage = ((Math.abs(originalValue) / totalAbs) * 100);
-              const labelName = labels[context.dataIndex];
-              
-              if (percentage < 5) return '';
-              
-              if (dataType === 'composition') {
-                return labelName + '\n(' + percentage.toFixed(1) + '%)';
-              } else {
-                const sign = originalValue >= 0 ? '+' : '';
-                return labelName + '\n(' + sign + (originalValue / 10000).toFixed(0) + '万)';
-              }
-            },
-            display: function(context) {
-              const originalValue = values[context.dataIndex];
-              const totalAbs = values.reduce((sum, v) => sum + Math.abs(v), 0);
-              const percentage = ((Math.abs(originalValue) / totalAbs) * 100);
-              return percentage >= 5;
-            }
-          },
-          legend: {
-            position: 'bottom',
-            labels: {
-              padding: 20,
-              usePointStyle: true,
-              font: { family: 'Noto Sans JP', size: 12 },
-              generateLabels: function(chart) {
-                const data = chart.data;
-                if (data.labels.length && data.datasets.length) {
-                  return data.labels.map((label, i) => {
-                    const value = values[i];
-                    const absValue = Math.abs(value);
-                    const percentage = ((absValue / values.reduce((sum, v) => sum + Math.abs(v), 0)) * 100).toFixed(1);
-                    
-                    let displayText = label;
-                    if (dataType === 'composition') {
-                      displayText += ` (${percentage}%)`;
-                    } else {
-                      displayText += ` (${value >= 0 ? '+' : ''}${value.toLocaleString()}円)`;
-                    }
-                    
-                    return {
-                      text: displayText,
-                      fillStyle: backgroundColors[i],
-                      hidden: false,
-                      index: i
-                    };
-                  });
-                }
-                return [];
-              }
-            }
-          },
-          tooltip: {
-            backgroundColor: 'rgba(0,0,0,0.8)',
-            titleFont: { family: 'Noto Sans JP', size: 14 },
-            bodyFont: { family: 'Noto Sans JP', size: 12 },
-            callbacks: {
-              label: function(context) {
-                const value = values[context.dataIndex];
-                const absValue = Math.abs(value);
-                if (dataType === 'composition') {
-                  const percentage = ((absValue / values.reduce((sum, v) => sum + Math.abs(v), 0)) * 100).toFixed(1);
-                  return `${context.label}: ¥${absValue.toLocaleString()} (${percentage}%)`;
-                } else {
-                  return `${context.label}: ${value >= 0 ? '+' : ''}¥${value.toLocaleString()}`;
-                }
-              }
-            }
-          }
-        },
-        animation: {
-          animateRotate: true,
-          duration: 1000
-        },
-        elements: {
-          arc: {
-            borderWidth: 2
-          }
-        }
-      },
-      plugins: [ChartDataLabels, centerTextPlugin]
-    };
-    chartInstance1 = new Chart(ctx, chartConfig);
-  }
+10年書き続けて、見えた「壁」
 
-  // ★★★ ここを修正しました！ ★★★
-  // DOMContentLoadedイベントを待たずに、スクリプトが読み込まれたらすぐに実行します。
-  
-  // 初期チャート作成
-  createFinancialChart1('composition');
-  
-  // ボタンイベント
-  document.querySelectorAll('.toggle-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      const chartType = this.getAttribute('data-chart');
-      createFinancialChart1(chartType);
-    });
-  });
-  // ★★★ ここまで ★★★
-</script>
+実は僕、かれこれ**10年近く**ブログを書いています。  
+最初は「日記の延長」。  
+でも本格的に始めたのは**3年前**。  
+
+この2年間は書いて、書いて、書きまくる。  
+ほぼ**365日更新**。  
+けれど途中から、ふと気づいたんです。
+
+> 「ネタがない…そして、読まれない。」
+
+そんな時に出会ったのが、**ChatGPTやGemini**といったAIの登場。  
+これは僕らにとって、まるで“知識を無限にくれる先生”でした。  
+でも同時に、ブロガーにとっては“最大の脅威”でもありました。
+
+そしてもう一つの変化。  
+中小企業の中で、AI関連の業務を担当する部署を兼務したんです。  
+おかげで、40代にして**AIを学ぶチャンス**を得られましたが、ブログ運営にはいくつかの“気づき”が生まれました。
+
+
+## 気づき①：ブログの価値が下がっている
+
+昔は「お気に入りのブログを毎日読む人」がけっこういました。  
+でも今は違う。  
+みんな**YouTube**や**Instagram**を観ている。
+
+つまり、いまは**動画の時代**。  
+文章中心のブログは、情報のスピードでも感情の伝わり方でも劣勢になっている。  
+だからこそ、ブログの価値は<mark>以前より確実に下がっている</mark>と感じました。
+
+
+
+## 気づき②：AIの進化で「経験」が重要に
+
+AIの台頭によって、“情報を集めるだけ”のブログは不要になりました。  
+なぜなら、AIがすでに**最速で答えを出してくれる**時代に突入したこと。
+
+> 「ホワイトカラーがAIに取って代わられる時代」  
+> でも、「AIを使いこなせない人」もまた淘汰される。
+
+ブログも例外ではありません。  
+AIによって知識の壁が壊れ、今は**経験や現場のリアルさ**にしか価値が残らない。  
+そう気づいた瞬間、僕の中で何かが崩れ落ちました。
+
+
+## 気づき③：アフィリエイトやAdSense限界
+
+最大の理由はこれ。
+ブログ収益です。
+これが悩みの種でした。  
+サーバー代、テーマ代、そして時間を考えると‥‥。  
+どれだけ書いても、**収益はトントン**。
+
+もっと個性があれば、もっと尖った発信ができれば違ったのかもしれません。  
+でも、僕はどれだけAIを使いこなしても、所詮は“普通の人”。  
+結果、**サーバー維持コスト＝収入** という現実に直面しました。
+
+
+## そして、僕はブログを「やめた」
+
+そう。  
+一度は完全にやめました。  
+
+でも不思議なもので、  
+「やっぱり書きたい」「もう少しだけ、活かしたい」  
+そんな気持ちが残ったんです。
+
+
+## Cloudflare × VS Code の無料へ挑戦
+
+たどり着いた答えが、**『Cloudflare × VS Code』**。  
+いわゆる「無料で動く新しいブログ環境」です。
+
+### 💡 ざっくり言うと
+- **Cloudflare** … 世界中にサーバーを持つクラウドインフラ企業。  
+  CDN（サイト高速化）機能が中心で、<mark>無料で静的サイトを公開</mark>できる。  
+- **VS Code** … Microsoft製のプログラミングエディタ。軽くて無料。  
+- **GitHub** … コードの保管庫。Cloudflareと自動連携できる。
+
+この3つを組み合わせると👇
+VS Codeで記事を書く → GitHubに保存 → Cloudflareが自動で公開
+
+
+## もちろん、最初は全然できなかった
+
+正直、最初はちんぷんかんぷん。  
+でも、Gemini（AI）に聞きながら少しずつ形にしました。
+
+コードの意味を調べ、画像を貼って質問し、  
+試行錯誤を繰り返してようやく公開に成功。
+
+URLがちょっと変なのはご愛敬。  
+でも、<mark>コストゼロで再スタート</mark>できた達成感は大きかった。
+
+
+
+## 結論：学び直しは、意外と楽しい
+
+わからないことが多いほど、学びが多い。  
+やってみると「沼」なんですが、悪くない沼です。  
+
+この経験を通じて、  
+> 「自分で作れる範囲を少しずつ増やす」  
+という楽しさを、久しぶりに思い出しました。
+
+これからもこのブログでは、  
+同世代のサラリーマン投資家たちへ、  
+<mark>“現実と理想のあいだ”を少しだけ楽にするヒント</mark>を発信していきます。
+
+
+### 🔖 まとめ
+
+- ブログは「知識」より「経験」で勝負する時代へ  
+- 無料でも発信の場は作れる（Cloudflare × VS Code）  
+- 学び直しは面倒でも、確実に成長につながる  
+
+これからも、「ぐりっとの再挑戦」を見守っていただけたらうれしいです。
