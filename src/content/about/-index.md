@@ -1,7 +1,7 @@
 ---
 title: "京都郊外に住んでいるサラリーマン投資家『ぐりっと』です。"
 meta_title: "ぐりっとについて (About)"
-image: "/images/author.png"
+image: "/images/grit.png"
 draft: false
 
 what_i_do:
