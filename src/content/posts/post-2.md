@@ -25,45 +25,133 @@ draft: false
 ## 2025年11月1日時点の金融資産（表）
 
 <style>
+  /* ------------------ */
+  /* グラフ・表 共通設定 */
+  /* ------------------ */
+  /* グラフと表で使う Noto Sans JP フォントを全体に適用 */
+  * {
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  
+  /* 共通クラス */
+  .text-center {
+    text-align: center !important;
+  }
+  .positive {
+    color: #2e8b57;
+  }
+  .negative {
+    color: #dc3545;
+  }
+
+  /* ------------------ */
   /* 表のスタイル */
+  /* ------------------ */
   .asset-table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-family: 'Noto Sans JP', sans-serif; /* グラフのフォントと統一 */
   }
-  
   .asset-table th {
     background-color: #05374b;
     color: white;
     text-align: center;
     padding: 8px;
   }
-  
   .asset-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: right;
   }
-  
   .asset-table tr:nth-child(even) {
     background-color: #f2f2f2;
   }
-  
-  /* クラス定義（グラフと共通化） */
-  .text-center {
-    text-align: center !important; /* !importantで優先 */
+
+  /* ------------------ */
+  /* グラフのスタイル */
+  /* ------------------ */
+  .chart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 30px;
+  }
+  .controls {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .btn-group {
+    display: inline-flex;
+    gap: 8px;
+    background: #f1f3f4;
+    padding: 4px;
+    border-radius: 8px;
+  }
+  .toggle-btn {
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    color: #666;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .toggle-btn.active {
+    background: #05374b;
+    color: white;
+    box-shadow: 0 2px 4px rgba(5, 55, 75, 0.3);
+  }
+  .toggle-btn:hover:not(.active) {
+    background: #e8eaed;
+  }
+  .chart-wrapper {
+    position: relative;
+    height: 500px;
+  }
+  .summary-info {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .total-amount {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #05374b;
+    margin-bottom: 8px;
+  }
+  .month-change {
+    font-size: 1.2em;
+    font-weight: 500;
   }
   
-  .positive {
-    color: #2e8b57;
-  }
-  
-  .negative {
-    color: #dc3545;
+  /* グラフのレスポンシブ対応 */
+  @media (max-width: 768px) {
+    .chart-container {
+      padding: 20px;
+      margin: 10px;
+    }
+    .chart-wrapper {
+      height: 400px;
+    }
+    .btn-group {
+      flex-direction: column;
+      width: 100%;
+    }
+    .toggle-btn {
+      width: 100%;
+      margin: 2px 0;
+    }
+    .total-amount {
+      font-size: 1.5em;
+    }
   }
 </style>
-
 <table class="asset-table">
   <thead>
     <tr>
@@ -146,110 +234,6 @@ draft: false
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
-<style>
-  * {
-    font-family: 'Noto Sans JP', sans-serif;
-  }
-  
-  /* bodyへのスタイル指定は削除し、記事全体に影響しないように調整 */
-  
-  .chart-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 30px;
-  }
-  
-  .controls {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .btn-group {
-    display: inline-flex;
-    gap: 8px;
-    background: #f1f3f4;
-    padding: 4px;
-    border-radius: 8px;
-  }
-  
-  .toggle-btn {
-    padding: 10px 20px;
-    border: none;
-    background: transparent;
-    color: #666;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    font-family: 'Noto Sans JP', sans-serif;
-  }
-  
-  .toggle-btn.active {
-    background: #05374b;
-    color: white;
-    box-shadow: 0 2px 4px rgba(5, 55, 75, 0.3);
-  }
-  
-  .toggle-btn:hover:not(.active) {
-    background: #e8eaed;
-  }
-  
-  .chart-wrapper {
-    position: relative;
-    height: 500px;
-  }
-  
-  .summary-info {
-    margin-top: 20px;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .total-amount {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: #05374b;
-    margin-bottom: 8px;
-  }
-  
-  .month-change {
-    font-size: 1.2em;
-    font-weight: 500;
-  }
-  
-  /* positive, negative クラスは表のCSSで共通定義済み */
-  
-  @media (max-width: 768px) {
-    .chart-container {
-      padding: 20px;
-      margin: 10px;
-    }
-    
-    .chart-wrapper {
-      height: 400px;
-    }
-    
-    .btn-group {
-      flex-direction: column;
-      width: 100%;
-    }
-    
-    .toggle-btn {
-      width: 100%;
-      margin: 2px 0;
-    }
-    
-    .total-amount {
-      font-size: 1.5em;
-    }
-  }
-</style>
-
 <div class="chart-container">
   <div class="controls">
     <div class="btn-group">
@@ -302,7 +286,12 @@ draft: false
     }
   };
   // プラグインを登録
-  Chart.register(centerTextPlugin);
+  if (typeof centerTextPlugin !== 'undefined') {
+      // 既に登録されていないか確認
+      if (!Chart.registry.plugins.get('centerText')) {
+          Chart.register(centerTextPlugin);
+      }
+  }
   // データ定義
   const financialData1 = {
     composition: {
@@ -327,11 +316,6 @@ draft: false
       "日本株": -6300,
       "現金": -7655
     }
-  };
-  // カテゴリマッピング
-  const categoryMapping1 = {
-    "composition": "資産構成",
-    "change": "先月比変動"
   };
   // カラーパレット（項目別固定色）
   const itemColors1 = {
@@ -491,16 +475,18 @@ draft: false
     };
     chartInstance1 = new Chart(ctx, chartConfig);
   }
+  
   // イベントリスナー
+  // ページが読み込まれたとき、またはこのスクリプトが実行されたときにチャートを描画
   document.addEventListener('DOMContentLoaded', function() {
     // 既にChartが描画済みでないかチェック
-    if (!chartInstance1) {
+    if (!chartInstance1 && document.getElementById('financialChart1')) {
         createFinancialChart1('composition');
     }
     
     // ボタンのイベントリスナー（重複登録を避けるため、一度だけ登録する工夫）
     const controls = document.querySelector('.chart-container .controls');
-    if (!controls.dataset.listenerAttached) {
+    if (controls && !controls.dataset.listenerAttached) {
         controls.dataset.listenerAttached = 'true';
         document.querySelectorAll('.toggle-btn').forEach(btn => {
             btn.addEventListener('click', function() {
