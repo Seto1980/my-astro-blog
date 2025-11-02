@@ -1,8 +1,8 @@
 ---
-title: " Apple・NVIDIA・Microsoftへ10年以上保有してわかったこと"
+title: "📘 Apple・NVIDIA・Microsoftへ10年以上保有してわかったこと"
 description: "投資は“好き”から始めても成功する。iPhoneへの感動、NVIDIAへの趣味の興味、MicrosoftのAIへの確信。10年以上の長期投資でわかった「成長の法則」とは。"
 date: 2025-11-02T12:00:00+09:00
-image: "/images/posts/09.png
+image: "/images/posts/investment-story.png"
 categories: ["投資"]
 authors: ["ぐりっと"]
 tags: ["長期投資", "Apple", "NVIDIA", "Microsoft", "投資哲学"]
