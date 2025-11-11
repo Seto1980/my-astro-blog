@@ -10,7 +10,7 @@ const entry = (await getEntry(
   "contact",
   "-index"
 )) as CollectionEntry<"contact">;
-// const { contact_form_action } = config.params;  <-- Netlify Formsでは不要なため削除(またはコメントアウト)
+// const { contact_form_action } = config.params; // <-- 不要なため削除
 const { address, email, phone } = config.contactinfo;
 const { title, description, meta_title, image } = entry.data;
 ---
@@ -56,18 +56,10 @@ const { title, description, meta_title, image } = entry.data;
         </div>
         <div class="sm:col-7 md:col-8">
           <form
-            name="contact"
             class="contact-form row gy-2 justify-center"
             method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
+            action="https://formspree.io/f/xeovqlnk"
           >
-            <p class="hidden" style="display:none;">
-              <label>
-                Don’t fill this out if you’re human: <input name="bot-field" />
-              </label>
-            </p>
-
             <div class="lg:col-6">
               <label class="mb-2 block" for="name"
                 >Name <span class="text-red-600">*</span></label
