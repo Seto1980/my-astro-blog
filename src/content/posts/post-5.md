@@ -2,7 +2,7 @@
 title: "オリックスの魅力と、いまの僕の立ち位置"
 description: "45歳サラリーマン投資家が10年保有するオリックス(8591)の魅力。安定配当と多角化事業を評価しつつ、NISA非課税期間終了を前に今後の出口戦略を考察します。"
 date: 2025-11-11
-image: "/images/posts/orix-8591.png"
+image: "/images/posts/11.11.PNG"
 categories: ["投資"]
 authors: ["ぐりっと"]
 tags: ["投資", "オリックス", "日本株", "高配当株", "NISA"]
@@ -45,8 +45,7 @@ NISAの非課税期間がそろそろ終わるので、来年以降は売却も�
 * ORIX Europe
 * アジア・豪州
 
-金融・リース、不動産、投資、保険、銀行業務など、ほぼ“経済の全方位”を押さえ
-ている。
+金融・リース、不動産、投資、保険、銀行業務など、ほぼ“経済の全方位”を押さえている。
 つまり、国内消費が落ち込んでも、海外で利益を上げる力がある。
 この点が「日本株だけど、米国株っぽく動く」と感じる理由です。
 
@@ -64,7 +63,7 @@ NISAの非課税期間がそろそろ終わるので、来年以降は売却も�
 直近の **配当利回りは3.09％**（2025年11月11日時点）。
 高配当を軸にしたポートフォリオを作りたい人にとって、「日本株でリスクを抑えたい」ときにちょうどいいポジションになる銘柄です。
 
-| 決算期 | 年間配当金（円） | 備考 |
+| 決算期 | 年間配ទ金（円） | 備考 |
 | :--- | :--- | :--- |
 | 2015/3期 | 36円 ([ORIX][1]) | 2015年3月期実績。 |
 | 2016/3期 | 約 45.75円 ([ダイヤモンド・オンライン][2]) | 増配。 |
@@ -81,7 +80,7 @@ NISAの非課税期間がそろそろ終わるので、来年以降は売却も�
 [1]: https://www.orix.co.jp/grp/pdf/newsroom/newsrelease/150512_ORIXJ.pdf?utm_source=chatgpt.com "[PDF] 8591) 2015 年 3 月期の剰余金配当および - オリックスグループ"
 [2]: https://diamond.jp/zai/articles/-/1016204?utm_source=chatgpt.com "増配」を発表して、配当利回りが4.0％に！ 年間配当額は1年で9.8 ..."
 [3]: https://diamond.jp/zai/articles/-/238085?utm_source=chatgpt.com "オリックス、連続増配は10期でストップも配当利回り5.7％を維持 ..."
-[4T]: https://kabuyoho.jp/sp/reportDps?bcode=8591&utm_source=chatgpt.com "オリックス(8591) : 配当情報 - 株予報Pro"
+[4]: https://kabuyoho.jp/sp/reportDps?bcode=8591&utm_source=chatgpt.com "オリックス(8591) : 配当情報 - 株予報Pro"
 [5]: https://minkabu.jp/stock/8591/dividend?utm_source=chatgpt.com "オリックス (8591) : 配当情報 [ORIX] - みんかぶ"
 [6]: https://www.orix.co.jp/grp/company/newsroom/newsrelease/pdf/250512_ORIXJ.pdf?utm_source=chatgpt.com "[PDF] 8591） 2025 年 3 月期の剰余金配当および 2026 - オリックスグループ"
 
