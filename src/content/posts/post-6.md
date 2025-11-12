@@ -16,30 +16,6 @@ lang: ja
 draft: false
 ---
 
-# SEO / OGP設定
-
-```yaml
-og:
-  title: "子育て世代に高配当ETFが向いている3つの理由"
-  description: "インカムゲインの安心感、再投資のしやすさ、心理的支えという3つの理由で高配当ETFは子育て世代に最適。"
-  image: "/images/posts/11.12.png"
-  type: "article"
-  url: "[https://yourdomain.com/blog/high-dividend-etf-for-parents](https://yourdomain.com/blog/high-dividend-etf-for-parents)"
-
-twitter:
-  card: "summary_large_image"
-  site: "@guritto_invest"
-  creator: "@guritto_invest"
-
-schema:
-  type: "Article"
-  headline: "子育て世代に高配当ETFが向いている3つの理由"
-  author: "ぐりっと"
-  publisher: "ぐりっとブログ"
-  datePublished: "2025-11-12"
-  dateModified: "2025-11-12"
----
-
 # 💬 高配当は悪で、インデックス投資は正義なのか？
 
 僕はサラリーマン投資家。  
