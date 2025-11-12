@@ -8,8 +8,8 @@ tags: ["投資", "高配当ETF", "インデックス投資", "NISA"]
 category: "資産運用"
 description: "VYM・HDV・SPYDなどの高配当ETFとS&P500・オルカンの違いを比較し、子育て世代に高配当が向いている理由を3つ解説します。"
 keywords: ["高配当ETF", "VYM", "HDV", "SPYD", "オルカン", "S&P500", "NISA"]
-cover_image: "/images/11.12.png"
-thumbnail: "/images/11.12.png"
+cover_image: "/images/posts/11.12.png"
+thumbnail: "/images/posts/11.12.png"
 toc: true
 reading_time: 7
 lang: ja
